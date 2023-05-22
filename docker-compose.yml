@@ -1,0 +1,45 @@
+version: '3'
+services:
+  nginx:
+    build: ~/Desktop/inception/requirements/nginx
+    depends_on:
+      - wordpress
+    ports:
+      - 443:443
+    networks:
+      - main_network
+    volumes:
+      - /home/ahakam/data/wordpress:/var/www/html/wordpress
+
+  db:
+    build: ~/Desktop/inception/requirements/maria
+    container_name: maria
+    restart: always
+    ports:
+      - 3306:3306
+    networks:
+      - main_network
+    env_file:
+      - .env
+    volumes:
+      - /home/ahakam/data/mariadb:/var/lib/mysql/
+
+  wordpress:
+    build: ~/Desktop/inception/requirements/express
+    container_name: wordpress_container
+    restart: always
+    ports:
+      - 9000:9000
+    networks:
+      - main_network
+    env_file:
+      - .env
+    depends_on:
+      - db
+    volumes:
+      - /home/ahakam/data/wordpress:/var/www/html/wordpress
+
+networks:
+  main_network:
+    driver: bridge
+
