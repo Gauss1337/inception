@@ -1,0 +1,10 @@
+CREATE DATABASE IF NOT EXISTS wordpress;
+
+CREATE USER IF NOT EXISTS 'ahakam'@'%' IDENTIFIED BY 'gauss1599';
+
+GRANT ALL PRIVILEGES ON wordpress.* TO 'ahakam'@'%';
+
+ALTER USER 'root'@'localhost' IDENTIFIED BY 'gauss1599';
+
+FLUSH PRIVILEGES;
+

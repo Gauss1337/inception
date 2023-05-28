@@ -31,29 +31,42 @@ define('NONCE_KEY',        'G*wj:vrGc }r^.wa z1_U98fa^H-)fbNP9+EQ%c=+0{vi0pf|/zH
 define('AUTH_SALT',        'DvX4SLM9Oui5U4f@|<372jURO<y37M>zC97Jja1o7_)j]<r4qT9an`xU1:W1]Zmo');
 define('SECURE_AUTH_SALT', 'eI`v|}Ka.KNt`$sL/m&!}{nW.-1qiTVX= dcD%--ai_y7=:yZs:[ 7k|G:2-923I');
 define('LOGGED_IN_SALT',   'g|0fBnJX7jT%+8o;T0)c]83e(py+@_bWcA1;d%Au]la6)(3h8zS)DLH=5EF35[vZ');
-define('NONCE_SALT',       '1>YGt?`|-A#jZ}-R*|HgFl@KB2]g$j+(=)kCd=^rP/}T9EFEWI|C0og6Fv~;;P7r';
+define('NONCE_SALT',       '1>YGt?`|-A#jZ}-R*|HgFl@KB2]g$j+(=)kCd=^rP/}T9EFEWI|C0og6Fv~;;P7r');
+
+/**#@-*/
 
 /**
- * WordPress Database Table Prefix
+ * WordPress database table prefix.
+ *
+ * You can have multiple installations in one database if you give each
+ * a unique prefix. Only numbers, letters, and underscores please!
  */
 $table_prefix = 'wp_';
 
 /**
- * Filesystem Paths
+ * For developers: WordPress debugging mode.
+ *
+ * Change this to true to enable the display of notices during development.
+ * It is strongly recommended that plugin and theme developers use WP_DEBUG
+ * in their development environments.
+ *
+ * For information on other constants that can be used for debugging,
+ * visit the documentation.
+ *
+ * @link https://wordpress.org/documentation/article/debugging-in-wordpress/
  */
-define('ABSPATH', dirname(__FILE__) . '/');
-define('WP_CONTENT_DIR', dirname(__FILE__) . '/wp-content');
+define( 'WP_DEBUG', true );
 
-/**
- * Debugging and Error Handling
- */
-define('WP_DEBUG', false);
-define('WP_DEBUG_LOG', false);
+/* Add any custom values between this line and the "stop editing" line. */
 
-/**
- * Custom Settings
- */
-// Add any additional custom settings or constants here
+define('WP_ALLOW_REPAIR', true);
 
 /* That's all, stop editing! Happy publishing. */
 
+/** Absolute path to the WordPress directory. */
+if ( ! defined( 'ABSPATH' ) ) {
+	define( 'ABSPATH', __DIR__ . '/' );
+}
+
+/** Sets up WordPress vars and included files. */
+require_once ABSPATH . 'wp-settings.php';
