@@ -16,9 +16,12 @@ RUN curl -o wordpress.tar.gz -SL https://wordpress.org/latest.tar.gz && \
     tar -xf wordpress.tar.gz -C /var/www/html && \
     rm wordpress.tar.gz
 
+RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
+RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
+
 WORKDIR "/var/www/html/wordpress"
 
-COPY ./wp-conf.php .
+COPY ./wp-config.php .
 
 COPY ./express_script.sh /express_script.sh
 

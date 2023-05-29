@@ -11,7 +11,7 @@ services:
     volumes:
       - wordpress:/var/www/html/wordpress
 
-  db:
+  maria:
     build: ./requirements/maria
     container_name: maria
     restart: on-failure
@@ -35,7 +35,7 @@ services:
     env_file:
       - .env
     depends_on:
-      - db
+      - maria
     volumes:
       - wordpress:/var/www/html/wordpress
 
@@ -48,11 +48,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /Users/ahakam/data/mariadb
+      device: /home/ahakam/data/mariadb
       o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: /Users/ahakam/data/wordpress 
+      device: /home/ahakam/data/wordpress 
       o: bind
