@@ -1,4 +1,4 @@
-DOCKER = docker
+DCKER = docker
 
 DOCKER_COMPOSE = docker-compose
 
@@ -19,4 +19,5 @@ clean:
 	$(DOCKER_COMPOSE) -f $(DOCKER_COMPOSE_FILE) down -v
 	rm -rf /Users/ahakam/data/mariadb/*
 	rm -rf /Users/ahakam/data/wordpress/*
+	docker system prune --force --all
 

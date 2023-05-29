@@ -8,7 +8,7 @@ RUN openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/nginx/nginx
     -subj "/C=US/ST=California/L=San Francisco/O=My Company/CN=mydomain.com"
 
 # Configure Nginx to use SSL
-COPY nginx.conf /etc/nginx/conf.d/custom.conf
+COPY ./conf/nginx.conf /etc/nginx/conf.d/custom.conf
 
 # Expose port 443 for HTTPS traffic
 

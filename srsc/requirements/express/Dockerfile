@@ -6,7 +6,7 @@ RUN apt-get update && apt-get install -y \
 
 RUN mkdir -p /run/php/
 
-COPY ./www.conf /etc/php/7.3/fpm/pool.d/www.conf
+COPY ./conf/www.conf /etc/php/7.3/fpm/pool.d/www.conf
 
 EXPOSE 9000
 
@@ -21,9 +21,9 @@ RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
 WORKDIR "/var/www/html/wordpress"
 
-COPY ./wp-config.php .
+COPY ./conf/wp-config.php .
 
-COPY ./express_script.sh /express_script.sh
+COPY ./tools/express_script.sh /express_script.sh
 
 RUN chmod +x /express_script.sh
 
