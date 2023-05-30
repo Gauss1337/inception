@@ -48,11 +48,11 @@ volumes:
     driver: local
     driver_opts:
       type: none
-      device: /Users/ahakam/data/mariadb
+      device: /home/ahakam/data/mariadb
       o: bind
   wordpress:
     driver: local
     driver_opts:
       type: none
-      device: /Users/ahakam/data/wordpress 
+      device: /home/ahakam/data/wordpress 
       o: bind
