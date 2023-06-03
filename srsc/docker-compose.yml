@@ -2,6 +2,9 @@ version: '3'
 services:
   nginx:
     build: ./requirements/nginx
+    image: nginx
+    container_name: nginx
+    restart: on-failure
     depends_on:
       - wordpress
     ports:
@@ -12,8 +15,9 @@ services:
       - wordpress:/var/www/html/wordpress
 
   maria:
-    build: ./requirements/maria
-    container_name: maria
+    build: ./requirements/mariadb
+    image: mariadb
+    container_name: mariadb
     restart: on-failure
     ports:
       - 3306:3306
@@ -25,9 +29,10 @@ services:
       - mariadb:/var/lib/mysql
 
   wordpress:
-    build: ./requirements/express
     container_name: wordpress_container
-    restart: always
+    build: ./requirements/wordpress
+    image: wordpress
+    restart: on-failure
     ports:
       - 9000:9000
     networks:
